@@ -6,6 +6,8 @@ buildscript {
         supportLibVersion = '26.1.0'
         daggerVersion = '2.11'
         dataBinding = '3.0.0'
+        retrofitVersion = "2.3.0"
+        okHttpVersion = "3.8.1"
     }
     repositories {
         google()
