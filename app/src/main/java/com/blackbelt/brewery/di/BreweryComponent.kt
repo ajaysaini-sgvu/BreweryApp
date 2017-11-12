@@ -1,6 +1,5 @@
 package com.blackbelt.brewery.di
 
-import android.app.Application
 import com.blackbelt.brewery.BreweryApp
 import dagger.BindsInstance
 import dagger.Component
@@ -9,10 +8,14 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf(
+        BindsModule::class,
+        BuildersModule::class,
+        NetworkModule::class,
+        HelpersModule::class,
         AndroidSupportInjectionModule::class))
 interface BreweryComponent {
 
-    fun inject(app: Application)
+    fun inject(app: BreweryApp)
 
     @Component.Builder
     interface Builder {
