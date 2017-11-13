@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
 
     Properties properties = new Properties()
-    properties.load(project.rootProject.file('../api_key').newDataInputStream())
+    properties.load(project.rootProject.file('../brewery_api_key').newDataInputStream())
     def API_KEY = "\""+properties.getProperty("api_key")+"\""
 
     compileSdkVersion 26
@@ -61,6 +61,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+
+    implementation "android.arch.lifecycle:extensions:1.0.0"
 
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'

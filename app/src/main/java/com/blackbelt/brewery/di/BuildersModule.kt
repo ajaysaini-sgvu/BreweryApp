@@ -1,6 +1,6 @@
 package com.blackbelt.brewery.di
 
-import com.blackbelt.brewery.view.MainActivity
+import com.blackbelt.brewery.view.home.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
