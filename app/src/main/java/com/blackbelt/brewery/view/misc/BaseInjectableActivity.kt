@@ -15,6 +15,8 @@ import javax.inject.Inject
 
 open abstract class BaseInjectableActivity : AppCompatActivity(), IErrorDelegate, HasSupportFragmentInjector {
 
+    private var mViewModel : BaseViewModel? = null
+
     @Inject
     lateinit var mDispatchingAndroidFragmentInjector: DispatchingAndroidInjector<Fragment>
 
@@ -24,6 +26,8 @@ open abstract class BaseInjectableActivity : AppCompatActivity(), IErrorDelegate
     }
 
     fun setContentView(@LayoutRes layoutId: Int, brVariable: Int, viewModel: BaseViewModel) {
+        mViewModel = viewModel
+        lifecycle.addObserver(viewModel)
         val dataBiding = DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, layoutId, null, false)
         dataBiding.setVariable(brVariable, viewModel)
         viewModel.setErrorDelegate(this)
@@ -37,6 +41,13 @@ open abstract class BaseInjectableActivity : AppCompatActivity(), IErrorDelegate
     }
 
     override fun onError(throwable: Throwable) {
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mViewModel?.let {
+            lifecycle.removeObserver(mViewModel as BaseViewModel)
+        }
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = mDispatchingAndroidFragmentInjector
