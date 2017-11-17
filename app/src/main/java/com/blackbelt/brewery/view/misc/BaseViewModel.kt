@@ -1,12 +1,13 @@
 package com.blackbelt.brewery.view.misc
 
+import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.databinding.Observable
 import android.databinding.PropertyChangeRegistry
 
 
-open class BaseViewModel : ViewModel(), Observable {
+open class BaseViewModel : ViewModel(), Observable, LifecycleObserver {
 
     @Transient
     private var mCallbacks: PropertyChangeRegistry? = null

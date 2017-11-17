@@ -16,5 +16,5 @@ class HelpersModule {
 
     @Singleton
     @Provides
-    fun provideGson(): Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+    fun provideGson(): Gson = GsonBuilder().create()
 }
